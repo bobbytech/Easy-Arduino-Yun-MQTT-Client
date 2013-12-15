@@ -75,7 +75,7 @@ mqtt.monitor();
 
 Define a function for your incoming messages using this syntax:
 ```c
-void someCallback(const String& topic, const String& message) { // go nutz }
+void someCallback(const String& topic, const String& message) { /* go nutz */ }
 ```
 
 Disclaimer
