@@ -47,7 +47,7 @@ Documentation
 
 To initialize the MQTTclient, call this function and pass your selected server as argument:
 ```c
-mqtt.begin(MQTT_HOST);
+mqtt.begin("test.mosquitto.org");
 ```
 
 ---
