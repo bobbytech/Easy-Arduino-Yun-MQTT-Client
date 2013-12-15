@@ -78,7 +78,8 @@ Define a function for your incoming messages using this syntax:
 void someCallback(const String& topic, const String& message) { // go nutz }
 ```
 
-/* Disclaimer */
+Disclaimer
+---
 
 This is the very first version. Amongst other things both QoS and secure client connection is not provided yet! Feel free to contribute!
 
