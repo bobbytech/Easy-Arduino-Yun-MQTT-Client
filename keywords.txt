@@ -1,0 +1,6 @@
+MQTTclient		KEYWORD1
+begin			KEYWORD2
+monitor			KEYWORD2
+publish			KEYWORD2
+subscribe		KEYWORD2
+unsubscribe		KEYWORD2
