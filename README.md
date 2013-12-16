@@ -1,8 +1,8 @@
 Easy Arduino Yun MQTT Client
 ---
 
-MQTTclient, a MQTT (http://mqtt.com) client for Arduino Yun
-Copyright 2013 (c) Martin "Bobby" Dal
+MQTTclient, a MQTT (http://mqtt.com) client for Arduino Yun, 
+Copyright 2013 (c) Martin "Bobby" Dal, 
 Bobby Technologies I/S (http://bobbytechnologies.dk)
 
 ---
