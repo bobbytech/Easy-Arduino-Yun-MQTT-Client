@@ -29,7 +29,9 @@ THE SOFTWARE.
 Introduction 
 ---
 
-This MQTT library for Arduino Yun use Lininio processes to facilitate MQTT communication. Different from already existing PubSubClient (https://github.com/mcollina/mqtt_on_the_yun), publishing floats and integers have been made easier without previous conversion to char*. Also topics will have their own callback function, with topic and message string provided as parameters, to make parsing messages easier and hopefully let you create IoT things faster!
+This MQTT library for Arduino Yun use Lininio processes to facilitate MQTT communication. Different from already existing PubSubClient (https://github.com/mcollina/mqtt_on_the_yun), publishing floats and integers have been made easier without previous conversion to char*. Also topics will have their own callback function, with topic and message string provided as parameters, to make parsing messages easier and hopefully let you create IoT things faster! 
+
+! Remember to rename library folder, as arduino IDE doesn't support hyphens !
 
 
 Dependencies 
