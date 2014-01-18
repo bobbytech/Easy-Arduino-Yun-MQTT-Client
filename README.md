@@ -90,6 +90,6 @@ void someCallback(const String& topic, const String& message) { /* go nutz */ }
 Disclaimer
 ---
 
-This is the very first version. Amongst other things both QoS and secure client connection is not provided yet, and seems there's something wrong with subscribing to all topics of a parent topic (#)! Feel free to contribute!
+This is the very first version. Amongst other things both QoS and secure client connection is not provided yet! Feel free to contribute!
 
 
