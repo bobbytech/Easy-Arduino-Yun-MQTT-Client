@@ -35,6 +35,7 @@
 #define MQTT_PARAM_TOPIC "-t"
 #define MQTT_PARAM_MSG "-m"
 #define MQTT_PARAM_VERBOSE "-v"
+#define MQTT_PARAM_PORT "-p"
 
 #define MAX_TOPICS 5
 
@@ -56,7 +57,7 @@ class MQTTclient {
 
 		MQTTclient();
 
-		void begin(const String& host);
+		void begin(const String& host, const unsigned short& port);
 		void monitor();
 
 		bool publish(const String& topic, const String& msg);
@@ -74,6 +75,7 @@ class MQTTclient {
 
 		Process _output;
 		String _host;
+		unsigned short _port;
 
 };
 

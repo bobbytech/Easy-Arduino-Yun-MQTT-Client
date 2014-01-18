@@ -26,8 +26,9 @@
 
 MQTTclient::MQTTclient() { }
 
-void MQTTclient::begin(const String& host) {
+void MQTTclient::begin(const String& host, const unsigned short& port) {
 	_host = host;
+	_port = port;
 }
 
 void MQTTclient::monitor() {
@@ -85,12 +86,18 @@ void MQTTclient::subscribe(const String& listenTopic, callbackFunction callback)
             _cbs[i].input.begin(MQTT_SUB);	
     		_cbs[i].input.addParameter(MQTT_PARAM_HOST);
     		_cbs[i].input.addParameter(_host);
+    		_cbs[i].input.addParameter(MQTT_PARAM_PORT);
+    		_cbs[i].input.addParameter(_port);
     		_cbs[i].input.addParameter(MQTT_PARAM_TOPIC);
     		_cbs[i].input.addParameter(listenTopic);
     		_cbs[i].input.addParameter(MQTT_PARAM_VERBOSE); 
     		_cbs[i].input.runAsynchronously();	
 
             assigned = true;
+
+            Serial.print(_cbs[i].listenTopic);
+            Serial.println(" assigned and running");
+
         }
         i++;
     }
@@ -120,7 +127,10 @@ void MQTTclient::read(Process& input, const String& listenTopic, callbackFunctio
 	bool tread = false;
 	bool done = false;
 
+
+
 	while(input.available() > 0 && (inchar = input.read()) != '\n') {
+
 		if (inchar != '\r' && inchar != -1) {
 		    if(inchar == ' ' && !tread) {
 		       	topic = inc;
@@ -142,10 +152,10 @@ void MQTTclient::read(Process& input, const String& listenTopic, callbackFunctio
 
 	if(done) {
 
-		if (listenTopic == topic) {
+		//if (listenTopic == topic) {
                 callback(topic, msg);
                 reading = false;
-    	}
+    	//}
 
 	  	input.flush(); 
 

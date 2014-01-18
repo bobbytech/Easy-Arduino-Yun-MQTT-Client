@@ -47,9 +47,9 @@ opkg install mosquitto mosquitto-client libmosquitto
 Documentation
 ---
 
-To initialize the MQTTclient, call this function and pass your selected server as argument:
+To initialize the MQTTclient, call this function and pass your selected server and port as arguments:
 ```c
-mqtt.begin("test.mosquitto.org");
+mqtt.begin("test.mosquitto.org", 1883);
 ```
 
 ---
@@ -57,6 +57,13 @@ mqtt.begin("test.mosquitto.org");
 To subscribe to a topic, call this function and put topic as the first argument, and define a name of the callback function:
 ```c
 mqtt.subscribe("test/topic", someCallback);
+```
+
+---
+
+Subscription to all sub topics is also possible, just place the #:
+```c
+mqtt.subscribe("test/topic/#", someCallback);
 ```
 
 ---
