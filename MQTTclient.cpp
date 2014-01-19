@@ -28,7 +28,7 @@ MQTTclient::MQTTclient() { }
 
 void MQTTclient::begin(const String& host, const unsigned short& port) {
 	_host = host;
-	_port = port;
+	_port = String(port);
 }
 
 void MQTTclient::monitor() {
@@ -95,9 +95,6 @@ void MQTTclient::subscribe(const String& listenTopic, callbackFunction callback)
 
             assigned = true;
 
-            Serial.print(_cbs[i].listenTopic);
-            Serial.println(" assigned and running");
-
         }
         i++;
     }
@@ -152,11 +149,12 @@ void MQTTclient::read(Process& input, const String& listenTopic, callbackFunctio
 
 	if(done) {
 
-		//if (listenTopic == topic) {
-                callback(topic, msg);
-                reading = false;
-    	//}
+		String subtopic = topic.substring(listenTopic.length()-1);
+		topic = listenTopic.substring(0, listenTopic.length()-2);
 
+        callback(topic, subtopic ,msg);
+        reading = false;
+    	
 	  	input.flush(); 
 
 	}

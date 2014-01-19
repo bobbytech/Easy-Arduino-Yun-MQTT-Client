@@ -27,6 +27,7 @@
 
 #include <Arduino.h>  
 #include <Process.h>
+#include <string>
 
 #define MQTT_PUB "mosquitto_pub"
 #define MQTT_SUB "mosquitto_sub"
@@ -39,7 +40,7 @@
 
 #define MAX_TOPICS 5
 
-typedef void (*callbackFunction)(const String& topic, const String& message);
+typedef void (*callbackFunction)(const String& topic, const String& subtopic, const String& message);
 
 struct Callbacks {
     
@@ -75,7 +76,7 @@ class MQTTclient {
 
 		Process _output;
 		String _host;
-		unsigned short _port;
+		String _port;
 
 };
 
