@@ -82,14 +82,15 @@ mqtt.monitor();
 
 ---
 
-Define a function for your incoming messages using this syntax:
+Define a function for your incoming messages using this syntax (subtopic will contain only the rest of the topicstring in '#' subscriptions):
 ```c
-void someCallback(const String& topic, const String& message) { /* go nutz */ }
+void someCallback(const String& topic, const String& subtopic, const String& message) { /* go nutz */ }
 ```
 
 Disclaimer
 ---
 
-This is the very first version. Amongst other things both QoS and secure client connection is not provided yet, and seems there's something wrong with subscribing to all topics of a parent topic (#)! Feel free to contribute!
+This is the very first version. Amongst other things both QoS and secure client connection is not provided yet! Feel free to contribute!
+
 
 

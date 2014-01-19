@@ -14,6 +14,8 @@
 
 #define MQTT_HOST "85.119.83.194" // test.mosquitto.org
 
+char led = 13;
+
 void setup() {
     
   // start serial
@@ -23,9 +25,10 @@ void setup() {
   // begin the client library (initialize host)
   mqtt.begin(MQTT_HOST);
   
+  pinMode(led, OUTPUT);
   // make some subscriptions
   mqtt.subscribe("test/mqttclient/topic1", someEvent);
-  mqtt.subscribe("test/mqttclient/topic2", anotherEvent);
+  mqtt.subscribe("test/mqttclient/topic2/#", anotherEvent);
   mqtt.subscribe("test/mqttclient/topic3", loveMqtt);
 
 }
@@ -38,7 +41,7 @@ void loop() {
 }
 
 // use callback function to work with your messages
-void someEvent(const String& topic, const String& message) {
+void someEvent(const String& topic, const String& subtopic, const String& message) {
   
   // print the topic and message
   Serial.print("topic: ");
@@ -53,20 +56,30 @@ void someEvent(const String& topic, const String& message) {
   
 }
 
-void anotherEvent(const String& topic, const String& message) {
+void anotherEvent(const String& topic, const String& subtopic, const String& message) {
   
   Serial.print("topic: ");
   Serial.println(topic);
+  Serial.print("subtopic: ");
+  Serial.println(subtopic);
   Serial.print("message: "); 
   Serial.println(message); 
-  
-  String someString = "hello myself";
-  
-  mqtt.publish("test/mqttclient/publish2", someString);
-  
+
+  // act on incoming event "test/mqttclient/topic2/light/?"
+  // message has to be sent, so figure out a nice API for your project
+
+  if (subtopic.startsWith("light")) {
+    if(subtopic.endsWith("on")) {
+      digitalWrite(led, HIGH);
+    }
+    if(subtopic.endsWith("off")) {
+      digitalWrite(led, LOW);
+    }
+  }
+    
 }
 
-void loveMqtt(const String& topic, const String& message) {
+void loveMqtt(const String& topic, const String& subtopic, const String& message) {
   
   Serial.print("topic: ");
   Serial.println(topic);
