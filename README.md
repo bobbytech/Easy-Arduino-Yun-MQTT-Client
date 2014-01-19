@@ -91,6 +91,9 @@ Disclaimer
 ---
 
 This is the very first version. Amongst other things both QoS and secure client connection is not provided yet! Feel free to contribute!
+<<<<<<< HEAD
 
+=======
+>>>>>>> 96174d55de1c0fa8257d10575360844c358e62d0
 
 
