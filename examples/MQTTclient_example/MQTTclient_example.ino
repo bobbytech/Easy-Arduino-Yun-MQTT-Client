@@ -23,7 +23,7 @@ void setup() {
   // remember the bridge!
   Bridge.begin();
   // begin the client library (initialize host)
-  mqtt.begin(MQTT_HOST);
+  mqtt.begin(MQTT_HOST, 1883);
   
   pinMode(led, OUTPUT);
   // make some subscriptions
