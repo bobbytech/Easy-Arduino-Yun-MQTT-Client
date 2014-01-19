@@ -27,7 +27,6 @@
 
 #include <Arduino.h>  
 #include <Process.h>
-#include <string>
 
 #define MQTT_PUB "mosquitto_pub"
 #define MQTT_SUB "mosquitto_sub"
