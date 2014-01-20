@@ -65,9 +65,7 @@ void anotherEvent(const String& topic, const String& subtopic, const String& mes
   Serial.print("message: "); 
   Serial.println(message); 
 
-  // act on incoming event "test/mqttclient/topic2/light/?"
-  // message has to be sent, so figure out a nice API for your project
-
+  // turn yun's red light on by publishing to "test/mqttclient/topic2/light/on"
   if (subtopic.startsWith("light")) {
     if(subtopic.endsWith("on")) {
       digitalWrite(led, HIGH);
