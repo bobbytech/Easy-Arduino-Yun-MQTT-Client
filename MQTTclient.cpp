@@ -56,6 +56,8 @@ bool MQTTclient::publish(const String& topic, const String& msg) {
 	_output.begin(MQTT_PUB);
     _output.addParameter(MQTT_PARAM_HOST);
     _output.addParameter(_host);
+    _output.addParameter(MQTT_PARAM_PORT);
+    _output.addParameter(_port);
     _output.addParameter(MQTT_PARAM_TOPIC);
     _output.addParameter(topic);
     _output.addParameter(MQTT_PARAM_MSG);
